@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    environment:
+      - "POSTGRES_DB=removir_timesheet"
+      - "POSTGRES_USER=dev_user"
+      - "POSTGRES_PASSWORD=test_pw"
+    ports: 
+      - 5432:5432
+  app:
+    build:
+      args:
+        ENVIRONMENT: dev
+    environment:
+      - "PYTHONBREAKPOINT=web_pdb.set_trace"
+      - "POSTGRES_DB=removir_timesheet"
+      - "POSTGRES_USER=dev_user"
+      - "POSTGRES_PASSWORD=test_pw"
+    volumes:
+      - ./app:/usr/removir/timesheet/
+    ports:
+      - "5555:5555"
