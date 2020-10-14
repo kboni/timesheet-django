@@ -32,4 +32,21 @@
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml -p dev-project up --build --force-recreate
 ```
-- Wait until the build ends and open http://localhost:8080
+Wait until the build ends and open http://localhost:8000 in a browser
+
+## Install requirements for local dev env inside venv
+```bash
+cd app
+pip install -r requirements/dev.txt
+```
+
+## Run PostgreSQL in Docker
+```bash
+docker run --name timesheet-postgres -p 5432:5432 -e POSTGRES_PASSWORD=test_pw postgres
+```
+
+## Access PostgreSQL inside Docker
+```bash
+docker exec -it timesheet-postgres bash
+psql -U postgres -d postgres
+```
