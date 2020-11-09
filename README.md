@@ -42,7 +42,7 @@ pip install -r requirements/dev.txt
 
 ## Run PostgreSQL in Docker
 ```bash
-docker run --name timesheet-postgres -p 5432:5432 -e POSTGRES_PASSWORD=test_pw postgres
+docker run --build --name timesheet-postgres -p 5432:5432 -e POSTGRES_PASSWORD=test_pw postgres
 ```
 
 ## Access PostgreSQL inside Docker
