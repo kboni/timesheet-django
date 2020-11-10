@@ -1,0 +1,69 @@
+{% extends "sheets/base.html" %}
+
+{% block content %}
+    <style>
+    thead {color: green;}
+    th, td {
+    padding: 5px;
+    border: 1px solid black;
+    }
+    </style>
+    <a href="{% url 'sheets:newtimesheet' %}">Add new time sheet</a>
+    <table>
+        <thead>
+           <th>User</th> <th>Client</th> <th>Project</th> <th>Activity</th> <th>Week</th> <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th>
+            <th>Thursday</th> <th>Friday</th> <th>Saturday</th> <th>Sunday</th>
+        </thead>
+        {% for timesheet in time_sheet %}
+        <tr>
+            <td>{{ timesheet.user }}</td>
+            <td>
+                <select>
+                    {% for client in clients %}
+                        <option>{{ client }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <select>
+                    {% for project in projects %}
+                        <option>{{ project }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <select>
+                    {% for activity in activities %}
+                        <option>{{ activity }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td>
+                <input type="week">
+            </td>
+            <td>
+                <input name="monday" type="number" min="0" max="10">
+            </td>
+            <td>
+                <input type="number" min="0" max="10">
+            </td>
+            <td>
+                <input type="number" min="0" max="10">
+            </td>
+            <td>
+                <input type="number" min="0" max="10">
+            </td>
+            <td>
+                <input type="number" min="0" max="10">
+            </td>
+            <td>
+                <input type="number" min="0" max="10">
+            </td>
+            <td>
+                <input type="number" min="0" max="10">
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock content %}

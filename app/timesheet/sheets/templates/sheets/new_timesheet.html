@@ -1,0 +1,12 @@
+{% extends "sheets/base.html" %}
+
+{% block content %}
+
+    <p>New timesheet</p>
+    <form action="{% url 'sheets:newtimesheet' %}" method='post'>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button name="submit">Add timesheet</button>
+    </form>
+
+{% endblock content %}

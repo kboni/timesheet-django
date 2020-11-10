@@ -1,0 +1,37 @@
+{% extends "sheets/base.html" %}
+
+{% block content %}
+    <style>
+    thead {color: green;}
+    th, td {
+    padding: 5px;
+    border: 1px solid black;
+    }
+    </style>
+    <a href="{% url 'sheets:newtimesheet' %}">Add new time sheet</a>
+    <table>
+        <thead>
+           <th>User</th> <th>Client</th> <th>Project</th> <th>Activity</th> <th>Week</th> <th>Monday</th> <th>Tuesday</th> <th>Wednesday</th>
+            <th>Thursday</th> <th>Friday</th> <th>Saturday</th> <th>Sunday</th>
+        </thead>
+        {% for category in ts_view %}
+        <tr>
+            <td>{{ category.user }}</td>
+            <td>{{ category.client }}</td>
+            <td>{{ category.project }}</td>
+            <td>{{ category.activity }}</td>
+            <td>
+                <input type="week">
+            </td>
+            <td>{{ category.monday }}</td>
+            <td>{{ category.tuesday }}</td>
+            <td>{{ category.wednesday }}</td>
+            <td>{{ category.thursday }}</td>
+            <td>{{ category.friday }}</td>
+            <td>{{ category.saturday }}</td>
+            <td>{{ category.sunday }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock content %}
